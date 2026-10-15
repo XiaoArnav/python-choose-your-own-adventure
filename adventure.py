@@ -1,3 +1,7 @@
+WIN_SCORE = 2
+SURVIVE_SCORE = 1
+
+
 def get_choice(prompt, options):
     """Display numbered options and return a valid choice."""
     while True:
@@ -27,12 +31,15 @@ def forest_path():
     if choice == 1:
         print("\nThe mushrooms lead you to a hidden fairy village.")
         print("The fairies crown you Guardian of the Forest. You win!")
+        return "win", WIN_SCORE
     elif choice == 2:
         print("\nFrom the treetop, you spot a castle beyond the forest.")
         print("You follow the view toward a new adventure. You survive!")
+        return "survive", SURVIVE_SCORE
     else:
         print("\nA friendly fox answers your call and guides you home.")
         print("You made a new friend. You win!")
+        return "win", WIN_SCORE
 
 
 def cave_path():
@@ -49,12 +56,15 @@ def cave_path():
     if choice == 1:
         print("\nYour torch reveals a sleeping dragon guarding a treasure chest.")
         print("You quietly leave the treasure and escape safely. You survive!")
+        return "survive", SURVIVE_SCORE
     elif choice == 2:
         print("\nYour shout wakes the dragon!")
         print("Luckily, the dragon is friendly and invites you to dinner. You win!")
+        return "win", WIN_SCORE
     else:
         print("\nYou leave the cave and discover a village nearby.")
         print("The villagers welcome you as a hero. You win!")
+        return "win", WIN_SCORE
 
 
 def river_path():
@@ -71,12 +81,15 @@ def river_path():
     if choice == 1:
         print("\nYour raft holds together and carries you safely across.")
         print("On the other side, you find a bag of gold. You win!")
+        return "win", WIN_SCORE
     elif choice == 2:
         print("\nYou find an ancient stone bridge covered in vines.")
         print("It leads you to a peaceful kingdom. You win!")
+        return "win", WIN_SCORE
     else:
         print("\nThe current is too strong!")
         print("River sprites rescue you and teach you river magic. You survive!")
+        return "survive", SURVIVE_SCORE
 
 
 def play_game():
@@ -96,11 +109,16 @@ def play_game():
     )
 
     if choice == 1:
-        forest_path()
+        result, score = forest_path()
     elif choice == 2:
-        cave_path()
+        result, score = cave_path()
     else:
-        river_path()
+        result, score = river_path()
+
+    result_message = "You won this adventure!" if result == "win" else "You survived this adventure!"
+    print(f"\n{result_message}")
+    print(f"Final score: {score}")
+    return result, score
 
 
 def main():
