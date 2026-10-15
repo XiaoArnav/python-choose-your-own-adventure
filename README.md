@@ -56,7 +56,8 @@ python -m unittest -v
 .
 ├── adventure.py
 ├── LICENSE
-└── README.md
+├── README.md
+└── test_adventure.py
 ```
 
 ## Challenge submission
